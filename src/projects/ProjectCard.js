@@ -1,13 +1,19 @@
-import { Project } from './Project';
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Project } from "./Project";
+import React from "react";
+import PropTypes from "prop-types";
 
 function formatDescription(description) {
-  return description.substring(0, 60) + '...';
+  return description.substring(0, 60) + "...";
 }
 
 function ProjectCard(props) {
   const { project } = props;
+
+  const handleEditClick = (projectBeingEdited) => {
+    console.log(projectBeingEdited);
+  };
+
+
   return (
     <div className="card">
       <img src={project.imageUrl} alt={project.name} />
@@ -17,6 +23,10 @@ function ProjectCard(props) {
         </h5>
         <p>{formatDescription(project.description)}</p>
         <p>Budget : {project.budget.toLocaleString()}</p>
+        <button class="bordered" onClick={() =>handleEditClick(project)}>
+          <span class="icon-edit "></span>
+          Edit
+        </button>
       </section>
     </div>
   );
